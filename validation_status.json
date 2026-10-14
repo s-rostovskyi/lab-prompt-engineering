@@ -2,15 +2,12 @@
   "artifact_language": "English",
   "session": "20261014T163343Z_9a1efd",
   "offline_validation": "PASS",
-  "real_model_responses_recorded": 328,
+  "real_model_responses_recorded": 463,
   "experiment_checks_pass": true,
   "revised_product_combined_pass": "15/15",
   "submission_materials_prepared": true,
   "production_ready": false,
-  "unresolved_variations": [
-    "Extraction corrected-date variation 0/5",
-    "Extraction embedded-instruction variation 0/5"
-  ],
+  "unresolved_variations": [],
   "repository_url": "https://github.com/s-rostovskyi/lab-prompt-engineering",
   "publication_verified": true,
   "new_api_calls_during_finalization": 0,
@@ -19,5 +16,12 @@
     "commit": "7c7cd3e8b874e25afdcb87e621eea9418915f3c1",
     "verification_date": "2026-10-14",
     "course_pull_request_found": false
-  }
+  },
+  "extraction_latest_revision": "v3r2",
+  "extraction_revision_checks_pass": true,
+  "extraction_first_revision_records": 50,
+  "extraction_latest_revision_records": 85,
+  "total_recorded_api_responses": 463,
+  "feedback_changes_publication_verified": false,
+  "new_api_calls_for_feedback_revision": 135
 }

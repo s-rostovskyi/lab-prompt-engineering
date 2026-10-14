@@ -4,11 +4,11 @@ This completed lab investigates sentiment classification, product descriptions a
 
 ## Start here
 
-1. Open [the completed notebook](prompt_engineering_lab.ipynb) for all prompt versions and saved actual responses. A [formatted HTML export](prompt_engineering_lab.html) is recommended for reading wide tables; a [52-page PDF export](prompt_engineering_lab.pdf) is also available.
+1. Open [the completed notebook](prompt_engineering_lab.ipynb) for all prompt versions and saved actual responses. A [formatted HTML export](prompt_engineering_lab.html) is recommended for reading wide tables; a [64-page PDF export](prompt_engineering_lab.pdf) is also available.
 2. Read [the failure analysis](failure_analysis_report.md), [final prompt documentation](improved_prompts_documentation.md) and [single-paragraph reflection](lab_summary.md).
 3. See [the product revision report](results/20261014T163343Z_9a1efd/product_revision_report.md) for the manually evaluated improvement.
 
-Original model calls were executed by the Python runners. The notebook replays their recorded evidence offline: running it does not make new API calls or overwrite finalized reports. Final base-case checks passed 15/15 for sentiment v3, extraction v3 and product v3r1. Extraction corrected-date and embedded-instruction variations failed 0/5 each and remain explicitly documented limitations.
+Original model calls were executed by the Python runners. The notebook replays their recorded evidence offline: running it does not make new API calls or overwrite finalized reports. Final selections are sentiment v3, product v3r1 and extraction v3r2, each with 15/15 final base-case passes. The historical extraction v3 failed two variations. Feedback-driven revisions preserve those failures; v3r2 passes the original variations plus four regressions and four new holdout cases. This remains a finite test set, not a production/security guarantee.
 
 ## File map
 
@@ -76,3 +76,13 @@ These add 45 logical API calls, excluding retries. Review their new CSV rather t
 This repository is a fork of [ai-consulting-bootcamp/lab-prompt-engineering](https://github.com/ai-consulting-bootcamp/lab-prompt-engineering). The course `instructions.md` requires a pull request back to that repository for AI review against `rubric.md`. Push the finished work, open that PR and address any blocking feedback. Also submit the fork URL in the portal deliverable field as required by the lab page. Keep the original `instructions.md` and `rubric.md`; their ungraded checkboxes are reviewer-owned templates, not statements that the work is missing.
 
 HTML/PDF export is optional. Failed historical tests are retained as evidence. No API key or unrelated project materials should be committed.
+
+## Extraction remediation after AI feedback
+
+`extraction_prompt_revision.py` retains both revision prompts; `extraction_followup.py` logs and checks their independent batches. Read `feedback_resolution.md` and the extraction-remediation section of the main report. The first extraction revision contains 50 calls, including three failures. The second contains 85 calls, all passing; total recorded API evidence is 463 responses. These are separate from original metrics and the product revision.
+
+```powershell
+python extraction_followup.py --session 20261014T163343Z_9a1efd --revision v3r2 --validate
+```
+
+Reproduction in a fresh completed original session uses `--revision v3r2 --stage all` and adds 85 calls. Its holdout stage includes four regression and four additional new cases. Use a local .env, retain logs, and do not overwrite completed batches. `--revision v3r1` reproduces the original attempted remediation, which intentionally stops after its holdout failure. The historical original/product validator remains available for those batches.

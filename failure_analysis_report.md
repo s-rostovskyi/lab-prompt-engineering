@@ -2,13 +2,23 @@
 
 ## Evidence and scope
 
-This report uses the completed original experiment in `results/20261014T163343Z_9a1efd/raw_responses.jsonl`, the supplied generated reports, and the reviewed original and revised product CSV files. The assistant reviewed the exported product responses against the supplied-facts and style rubric. No additional model calls were made while preparing this report. The source reports establish the recorded metrics; API configuration and provenance are retained in the experiment files and were not independently revalidated here.
+The original sections below describe the historical experiment; the compact comparison and extraction-remediation section identify the latest final selection. This report uses the completed original experiment in `results/20261014T163343Z_9a1efd/raw_responses.jsonl`, the supplied generated reports, and the reviewed original and revised product CSV files. The assistant reviewed the exported product responses against the supplied-facts and style rubric. No additional model calls were made while preparing this report. The source reports establish the recorded metrics; API configuration and provenance are retained in the experiment files and were not independently revalidated here.
 
 ## Main findings
 
 The final baseline-case tests returned 15/15 passing responses for sentiment v3 and extraction v3. Product v3 originally passed 14/15 automatic checks, but only 1/15 passed both factual and style review under the stricter manual rubric. The original screen missed unsupported claims such as sleek design, reliability, comfort and seamless interaction. The product revision v3r1 then passed 15/15 automatic checks and 15/15 combined manual checks in a new final batch.
 
 These results meet the strictly >80% criterion on the tested final base case for sentiment v3, extraction v3 and revised product v3r1. They do not establish production readiness: extraction v3 failed both the corrected-date and embedded-instruction variations in all five attempts per case. Identical outputs can therefore be consistently incorrect.
+
+## Compact version comparison
+
+| Task | v1 baseline, 15 runs | v2, 15 runs | Original v3 final, 15 runs | Latest final selection | Main remaining limitation |
+|---|---:|---:|---:|---|---|
+| Sentiment | 0.0% | 100.0% | 100.0% | v3: 15/15 (100.0%) | Small synthetic set; no isolated few-shot effect |
+| Product | 0.0% | 46.7% | 93.3% automatic; 6.7% combined manual | v3r1: 15/15 automatic and manual | Generic, repetitive copy from sparse facts |
+| Extraction | 0.0% | 100.0% | 100.0% base; 0/5 for two difficult cases | v3r2: 15/15 final; 15/15 original variations; 40/40 regression/new cases | Finite cases do not establish general injection resistance |
+
+Original automatic values preserve the historical evaluator. Baseline 0% measures the strict output contract, not necessarily semantic misunderstanding. Product manual and automatic scores must not be conflated. Exact-match agreement is reported separately from task correctness.
 
 ## Original experiment metrics
 
@@ -107,9 +117,32 @@ Combined manual compliance improved by 93.3 percentage points. All 45 exported r
 | Original product: desk lamp | 4/5 automatic checks | One description was too short; unsupported style claims also appear in the recorded example. |
 | Revised product: keyboard, missing price, desk lamp | 5/5 automatic and manual checks per case | Names and supplied prices were preserved, including null for the absent price. Descriptions stayed within 30–45 words without unsupported specific claims. |
 
-## Final assessment
+## Historical assessment before extraction remediation
 
 The tested final base cases meet the numerical target after the product revision. Sentiment is the strongest tested task because it passed both the base case and all five variation cases. Product v3r1 addresses the manually observed failure, while extraction remains unsuitable for unsupervised deployment on corrected-date or adversarial inputs. The next iteration should prioritize those extraction failures, retain all historical evidence, use independent holdout cases and separate technique changes to measure their individual effects. The scope of the current lab supports a documented experimental conclusion, not a blanket production-readiness claim.
+
+## Extraction remediation after feedback
+
+The feedback correctly identified two unresolved v3 failures: loss of the explicit year in the corrected date, and selection of an ID from an embedded command. The original output chose the corrected day but returned `April 3` rather than `2025-04-03`; it did not simply select the earlier date. The revised procedure explicitly distinguishes factual corrections from imperatives, preserves a factual year and excludes instruction-provided values.
+
+Extraction v3r1 passed 15/15 advanced calls and 15/15 original variation calls, resolving both targeted failures to 5/5 each. Four new holdout cases then revealed three errors: the yearless-correction case passed only 2/5 because three responses invented `2023`. The holdout batch passed 17/20 overall. This unsuccessful revision was retained, and its final stage was intentionally not run after the failure.
+
+Extraction v3r2 retains the first prompt and introduces explicit year-present/year-absent branches plus a yearless-correction example. Prompt examples use different IDs and dates from the test inputs. The four cases seen during v3r1 are labeled regressions; four additional cases were specified before v3r2 execution and are labeled new holdouts. The same model/API settings and exact-field evaluator are used, without JSON mode.
+
+| Revision batch | Cases | Actual attempts | Contract pass |
+|---|---|---:|---:|
+| v3r1 advanced | Base case | 15 | 15/15 |
+| v3r1 original variations | Missing fields, corrected date, embedded command | 15 | 15/15 |
+| v3r1 first holdout | Four previously unseen cases | 20 | 17/20; yearless correction 2/5 |
+| v3r2 advanced | Base case | 15 | 15/15 |
+| v3r2 original variations | Three original cases | 15 | 15/15 |
+| v3r2 regression | Four cases previously tested in v3r1 | 20 | 20/20 |
+| v3r2 new holdout | Four additional cases, not prompt examples | 20 | 20/20 |
+| v3r2 final | Independent base-case batch | 15 | 15/15 |
+
+The latest extraction result resolves the observed failures on these tests. It does not prove a security boundary against arbitrary malicious input. Examples, stricter constraints and a structured internal checklist were changed together; the experiment does not isolate CoT's contribution. The original unsuccessful batches remain in their journals and are not retroactively rescored.
+
+The new journals are `extraction_revision_responses.jsonl` (50 calls, v3r1) and `extraction_revision_responses_v3r2.jsonl` (85 calls, v3r2), under the main session. Their reports and metrics are separate from the original and product experiments. The complete evidence now contains 463 real API responses: 283 original, 45 product revision, 50 extraction v3r1 and 85 extraction v3r2.
 
 ## Original failure evidence appendix
 

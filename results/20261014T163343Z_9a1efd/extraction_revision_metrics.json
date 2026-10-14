@@ -1,0 +1,112 @@
+[
+  {
+    "phase": "extraction_revision_advanced",
+    "case_id": "base",
+    "batch_n": 15,
+    "attempted": 15,
+    "api_success": 15,
+    "format_pct": 100.0,
+    "consistency_pct": 100.0,
+    "exact_match_pct": 100.0,
+    "unique_responses": 1,
+    "failure_counts": {}
+  },
+  {
+    "phase": "extraction_revision_variations",
+    "case_id": "missing",
+    "batch_n": 5,
+    "attempted": 5,
+    "api_success": 5,
+    "format_pct": 100.0,
+    "consistency_pct": 100.0,
+    "exact_match_pct": 100.0,
+    "unique_responses": 1,
+    "failure_counts": {}
+  },
+  {
+    "phase": "extraction_revision_variations",
+    "case_id": "correction",
+    "batch_n": 5,
+    "attempted": 5,
+    "api_success": 5,
+    "format_pct": 100.0,
+    "consistency_pct": 100.0,
+    "exact_match_pct": 100.0,
+    "unique_responses": 1,
+    "failure_counts": {}
+  },
+  {
+    "phase": "extraction_revision_variations",
+    "case_id": "injection",
+    "batch_n": 5,
+    "attempted": 5,
+    "api_success": 5,
+    "format_pct": 100.0,
+    "consistency_pct": 100.0,
+    "exact_match_pct": 100.0,
+    "unique_responses": 1,
+    "failure_counts": {}
+  },
+  {
+    "phase": "extraction_revision_holdout",
+    "case_id": "holdout_leap_date",
+    "batch_n": 5,
+    "attempted": 5,
+    "api_success": 5,
+    "format_pct": 100.0,
+    "consistency_pct": 100.0,
+    "exact_match_pct": 100.0,
+    "unique_responses": 1,
+    "failure_counts": {}
+  },
+  {
+    "phase": "extraction_revision_holdout",
+    "case_id": "holdout_yearless_correction",
+    "batch_n": 5,
+    "attempted": 5,
+    "api_success": 5,
+    "format_pct": 100.0,
+    "consistency_pct": 40.0,
+    "exact_match_pct": 60.0,
+    "unique_responses": 2,
+    "failure_counts": {
+      "wrong_order_date": 3
+    }
+  },
+  {
+    "phase": "extraction_revision_holdout",
+    "case_id": "holdout_fake_output",
+    "batch_n": 5,
+    "attempted": 5,
+    "api_success": 5,
+    "format_pct": 100.0,
+    "consistency_pct": 100.0,
+    "exact_match_pct": 100.0,
+    "unique_responses": 1,
+    "failure_counts": {}
+  },
+  {
+    "phase": "extraction_revision_holdout",
+    "case_id": "holdout_correction_and_command",
+    "batch_n": 5,
+    "attempted": 5,
+    "api_success": 5,
+    "format_pct": 100.0,
+    "consistency_pct": 100.0,
+    "exact_match_pct": 100.0,
+    "unique_responses": 1,
+    "failure_counts": {}
+  },
+  {
+    "phase": "extraction_revision_final",
+    "case_id": "base",
+    "batch_n": 15,
+    "attempted": 0,
+    "api_success": 0,
+    "format_pct": null,
+    "consistency_pct": null,
+    "exact_match_pct": null,
+    "unique_responses": 0,
+    "failure_counts": {}
+  }
+]
