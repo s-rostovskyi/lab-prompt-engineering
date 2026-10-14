@@ -1,37 +1,23 @@
-# Product revision after manual review
+# Product revision v3r1: completed experiment
 
-The original final v3 product batch failed the supplied-facts rubric. The reviewed CSV contains 14 unsupported-claim failures and one response with 29 words. The original automatic screen did not detect every unsupported claim. These are actual observations from the supplied CSV, not invented model runs.
+The original final product batch passed 14/15 automatic checks but only 1/15 combined factual/style review. Unsupported claims such as appearance, comfort, reliability and connection quality escaped the original screen. One response contained 29 words.
 
-The revision `v3r1` uses explicit exclusions and new few-shot examples that avoid promises about design, reliability, comfort or performance. Neutral purchase guidance supplies the required word count without inventing product facts. This limits persuasive richness because only a name and price are available. Its measured performance is not yet known.
+The revision added explicit exclusions, neutral few-shot examples and a final fact/word-count instruction. All 45 revised responses passed the recorded automatic checks and assistant factual/style review, including an independent final batch of 15/15. Final descriptions contain 32-36 words. Claims about superior marketing persuasiveness are not supported; the copy remains generic and repetitive.
 
-## Install this update
+## Evidence
 
-Copy only `product_prompt_revision.py`, `product_followup.py`, and this instruction file to the same repository folder as `run_lab.py`. Keep your current notebook, original scripts, `.env`, `results` folder and reviewed `manual_review.csv`. Do not replace your completed work with the original unexecuted package.
+See `results/20261014T163343Z_9a1efd/product_revision_responses.jsonl`, `product_revision_manual_review.csv` and `product_revision_report.md`. Original v3 evidence remains in `raw_responses.jsonl` and `manual_review.csv`. The notebook includes both histories and completed analysis.
 
-## New experiments
-
-Use the same session/model/temperature as the original experiment. Only product calls are repeated: 15 advanced, 15 variations (three cases times five) and 15 independent final calls. The update adds 45 API calls, plus any transient-error retries.
-
-```powershell
-python product_followup.py --session 20261014T163343Z_9a1efd --stage advanced
-python product_followup.py --session 20261014T163343Z_9a1efd --stage variations
-python product_followup.py --session 20261014T163343Z_9a1efd --stage final
-```
-
-Read the output and failures after each stage. Inspect `product_revision_report.md` and `product_revision_responses.jsonl` in the existing session folder. If further prompt edits are necessary, retain this revision and use a new revision identifier rather than combining different prompts into one batch.
-
-The original `manual_review.csv` is preserved. New assessments go in `product_revision_manual_review.csv`. For each `revision_final` response, set `factual_pass` and `style_pass` to yes/no and add English notes. An assistant can review the exported file, but the CSV must identify assessments rather than fabricated responses. Use the same factual rubric for the original and revised batches.
+## Validation
 
 ```powershell
 python product_followup.py --session 20261014T163343Z_9a1efd --validate
 ```
 
-The updated validator requires at least 13/15 revised final responses to pass both automatic and manual checks. It also checks completeness of the original experiment and the original final sentiment/extraction thresholds. The original validator still evaluates the original v3 product batch and will continue to fail for that historical batch. This is expected and should remain documented.
+This verifies original experiment completeness, the original sentiment/extraction final base cases and revised product combined automatic/manual checks. The original validator still rejects the original product manual result; that is expected historical evidence rather than a reason to edit old scores.
 
-## Notebook and narrative
+## Reproduction
 
-Append a section titled `Product revision after manual review` to your executed notebook. State the observed failure, the revised prompt and why the original screen missed claims. Display the new actual outputs and revision report, retaining all original cells and results. You can run the commands above in notebook code cells with `!python` instead of `python`, or load the saved JSONL afterward.
+Use the API reproduction procedure in README.md with a fresh completed original session. Run revised advanced, variations and final stages in order; they add 45 logical API calls. Inspect and assess the new actual responses independently. Do not rerun a completed revision batch or pool duplicate attempts. Keep model and API settings fixed.
 
-Update `improved_prompts_documentation.md` with the revised prompt from `product_prompt_revision.py`. In `failure_analysis_report.md`, retain the original v3 results and add a clearly labeled v3r1 comparison based on the same manual rubric. Update the single paragraph in `lab_summary.md` after the new results are available. Avoid calling the original report generator after manual narrative edits because it regenerates the original report and summary.
-
-Do not claim this revision meets the threshold until actual API results and factual/style assessments confirm it. Upload both the original and revision evidence to the existing GitHub repository.
+The reviewed improvement concerns the supplied-facts/style contract. Original and revised automatic screens differ; compare factual accuracy using the same manual rubric. Extraction variation failures remain unresolved and are documented separately. No additional model calls are needed for the current submission.

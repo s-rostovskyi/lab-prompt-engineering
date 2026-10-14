@@ -12,5 +12,11 @@
     "Extraction corrected-date variation 0/5",
     "Extraction embedded-instruction variation 0/5"
   ],
-  "publication_verified": false
+  "publication_verified": true,
+  "publication_verification": {
+    "method": "remote HEAD matched clean local Git commit",
+    "commit": "7c7cd3e8b874e25afdcb87e621eea9418915f3c1",
+    "verification_date": "2026-10-14",
+    "course_pull_request_found": false
+  }
 }

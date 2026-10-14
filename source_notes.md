@@ -12,7 +12,7 @@ All four attachments from the referenced conversation were reviewed. Originals w
 - Baseline uses the messages and product supplied in the assignment. Variation cases are authored for educational testing, not represented as real customer data.
 - An extraction date without a year remains March 15; no calendar year is invented.
 - CoT is implemented as an internal step-by-step checking instruction with final JSON only. Hidden reasoning quality is not directly measured.
-- v2/v3 were authored before actual calls were available. Confirm or revise them after inspecting measured baseline failures; this limitation is stated in the report and summary.
+- Original v2/v3 were prepared as hypotheses before calls were available. Their actual outcomes and limitations are now analyzed in the completed reports; the subsequent product v3r1 revision responds to observed manual-review failures.
 - Product checks evaluate structure, length and selected unsupported claims. They do not establish persuasiveness or rule out every hallucination; human review is required.
 - Chat Completions follows the course implementation. The official [OpenAI API reference](https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create) was checked on October 14, 2026. The completed journals now contain 328 recorded successful API responses using gpt-4o-mini-2024-07-18; finalization verified their prompt hashes and experiment checks. No new API calls were made during finalization. Account access is evidenced by those stored responses, not by a new connection test.
 
