@@ -4,7 +4,7 @@ This completed lab investigates sentiment classification, product descriptions a
 
 ## Start here
 
-1. Open [the completed notebook](prompt_engineering_lab.ipynb) for all prompt versions and saved actual responses.
+1. Open [the completed notebook](prompt_engineering_lab.ipynb) for all prompt versions and saved actual responses. A [formatted HTML export](prompt_engineering_lab.html) is recommended for reading wide tables; a [52-page PDF export](prompt_engineering_lab.pdf) is also available.
 2. Read [the failure analysis](failure_analysis_report.md), [final prompt documentation](improved_prompts_documentation.md) and [single-paragraph reflection](lab_summary.md).
 3. See [the product revision report](results/20261014T163343Z_9a1efd/product_revision_report.md) for the manually evaluated improvement.
 
@@ -16,6 +16,7 @@ Original model calls were executed by the Python runners. The notebook replays t
 |---|---|
 | `instructions.md`, `rubric.md` | Original course assignment and grading criteria; retained unchanged |
 | `prompt_engineering_lab.ipynb` | Completed evidence notebook: all original versions, actual responses, metrics, analysis and product revision |
+| `prompt_engineering_lab.html` | Recommended browser export with readable tables, horizontal table scrolling, code and saved outputs |
 | `failure_analysis_report.md` | Baseline diagnosis, version comparisons, variations, limitations and original failure evidence |
 | `improved_prompts_documentation.md` | Original v3 templates and evidence-based product v3r1 final selection |
 | `lab_summary.md` | Required one-paragraph reflection at repository root |
@@ -25,11 +26,8 @@ Original model calls were executed by the Python runners. The notebook replays t
 | `product_prompt_revision.py`, `product_followup.py` | Revised product prompt, independent batches and combined experiment validator |
 | `validate_lab.py` | Original validator; still rejects the historical product v3 manual result |
 | `results/20261014T163343Z_9a1efd/` | Main session: API configuration, original/revised JSONL logs, reviewed CSVs and product revision report |
-| Other timestamped `results/` directories | Earlier experiments retained for traceability; not pooled into reported final metrics |
 | `results/metrics.json` | Original experiment automatic metrics, including the original product screen |
-| `source_notes.md` | Course sources, methodological decisions and evidence provenance |
 | `product_revision_instructions.md` | Revision rationale and reproduction instructions |
-| `submission_checklist.md` | Deliverable coverage and final submission steps |
 | `completion_checks.json`, `validation_status.json` | Supplemental validation/provenance records, not substitutes for actual journals |
 | `requirements.txt`, `.gitignore` | Dependencies and exclusions for local credentials/cache files |
 
