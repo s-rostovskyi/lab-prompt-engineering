@@ -1,0 +1,16 @@
+{
+  "session": "20261014T163343Z_9a1efd",
+  "original_api_records": 283,
+  "revision_api_records": 45,
+  "recorded_prompt_hashes_verified": true,
+  "all_recorded_api_statuses": "ok",
+  "original_and_revision_experiment_validator": "passed",
+  "revised_product_combined_pass": "15/15",
+  "notebook_output_provenance": "Executed offline replay of existing real API journals",
+  "new_api_calls": 0,
+  "unresolved": [
+    "Extraction corrected-date variation 0/5",
+    "Extraction embedded-instruction variation 0/5"
+  ],
+  "publication_verified": false
+}
